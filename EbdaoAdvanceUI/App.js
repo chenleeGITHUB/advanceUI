@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import CustomButton from './CustomButton';
+import withLogging from './withLogging';
+import FadeInComponent from './FadeInComponent';
+import ReanimatedComponent from './ReanimatedComponent';
 
-export default function App() {
+const EnhancedButton = withLogging(CustomButton);
+
+const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <EnhancedButton title="Enhanced Click Me" onPress={() => console.log('Enhanced Button Pressed!')} />
+      <FadeInComponent />
+      <ReanimatedComponent />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
+
+export default App;
